@@ -92,7 +92,3 @@ def zutaten_search(zutat:Zutat):
         return {"message": "Zutat in keinem Rezept gefunden."}
     return {f"Zutat":{zutat.zutaten}, "gefunden in Rezepten": len(treffer), "Rezepte": treffer}
 
-    # for rezept in rezepte.values():
-    #     if zutat.zutaten in rezept.zutaten:
-    #         return f"{zutat.zutaten} kommt in {rezept.name} vor.", rezept
-    # return "Zutat in keinem Rezept gefunden."
