@@ -39,5 +39,47 @@ PUT: "/rezepte/{rezept_id}" - appends comment("bemerkungen") to selected recipe 
     +returns updated recipe
 
 
+_____________________________________________________________________
 
-    
+ADDITIONAL (with LLM Help)
+_____________________________________________________________________
+
+>FILE: 
+    basemodel_getpostput_recipebook_with_comments_ingredientseach.py
+
+>COMMENT:
+    +Added typing Union, List for merging multiple recipe entries via POST
+    +Added implementing multiple recipes at once via post
+    +Added ingredient search function - type in ingredient via post and find recipes which contain your ingredient
+
+_____________________________________________________________________
+
+CHANGES:
+_____________________________________________________________________
+
+POST: "/rezepte" - debug prints: type of request method, request url, added recipe
+    +adds recipe entry validated by BaseModel Mask to recipelist
+    +returns recipelist
+    """"""""""""""""""""
+    +checks if entry is instance, compares recipe within list
+    +loops through entries and defines individual instances
+    +returns how many recipes got added
+    +returns IDs and Names of added recipes
+    +appends recipes to recipelist
+    +returns confirmation message that recipe got added
+    +also works for single entries
+
+
+_____________________________________________________________________
+
+ADDED FUNCTIONS:
+_____________________________________________________________________
+Pydantic BaseModel: 
+ 
+ Mask Zutat
+        mask:
+            zutaten: str
+
+POST: "/rezepte/zutaten" - searches for typed ingredient within body of recipelist /rezepte
+    +if ingredient within recipelist: return amount of hits of your ingredient within recipes, return recipes which contain your ingredient
+
