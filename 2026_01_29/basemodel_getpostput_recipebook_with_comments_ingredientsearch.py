@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request # pyright: ignore[reportMissingImports]
 
 from pydantic import BaseModel
 
-from typing import Optional
+from typing import Optional, Union, List
 
 
 '''
@@ -36,6 +36,9 @@ class Rezeptmaske(BaseModel):
 class Rezept_Bemerkung(BaseModel):
     bemerkungen: str
 
+class Zutat(BaseModel):
+    zutaten: str
+
 @app.get("/")
 def root():
     return {"message":"Willkommen zum Rezeptbuch! Für die Rezeptliste bitte /rezepte öffnen"}
@@ -49,15 +52,24 @@ def rezept_selection(rezept_id: int):
     if rezept_id not in rezepte:
         return "Rezept nicht gefunden, Eingabe überprüfen."
     print(rezepte[rezept_id])
-    return rezepte
+    return rezepte[rezept_id]
 
 @app.post("/rezepte")
-def rezept_add(rezept:Rezeptmaske, request:Request):
+def rezept_add(rezept:Union[Rezeptmaske, List[Rezeptmaske]],request:Request):
     print(type(request.method))
     print(request.url)
     print(rezept)
+    
+    if isinstance(rezept, list):
+        for r in rezept:
+            rezepte[r.rezept_id] = r
+        return {
+            "message": f"{len(rezept)} Rezepte hinzugefügt",
+            "Rezepte": [{"id":r.rezept_id, "Name":r.name} for r in rezept]
+            }
+    
     rezepte[rezept.rezept_id] = rezept
-    return rezepte
+    return {"message": "Rezept hinzugefügt", "rezept_id": rezept.rezept_id}
 
 @app.put("/rezepte/{rezept_id}")
 def rezept_comment(rezept_id: int, update:Rezept_Bemerkung):
@@ -72,3 +84,15 @@ def rezept_comment(rezept_id: int, update:Rezept_Bemerkung):
         rezept.bemerkungen = update.bemerkungen
     
     return rezept
+
+@app.post("/rezepte/zutaten")
+def zutaten_search(zutat:Zutat):
+    treffer = [r for r in rezepte.values() if zutat.zutaten in r.zutaten]
+    if not treffer:
+        return {"message": "Zutat in keinem Rezept gefunden."}
+    return {f"Zutat":{zutat.zutaten}, "gefunden in Rezepten": len(treffer), "Rezepte": treffer}
+
+    # for rezept in rezepte.values():
+    #     if zutat.zutaten in rezept.zutaten:
+    #         return f"{zutat.zutaten} kommt in {rezept.name} vor.", rezept
+    # return "Zutat in keinem Rezept gefunden."
