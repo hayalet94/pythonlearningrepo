@@ -56,9 +56,9 @@ def rezept_selection(rezept_id: int):
 
 @app.post("/rezepte")
 def rezept_add(rezept:Union[Rezeptmaske, List[Rezeptmaske]],request:Request):
-    print(type(request.method))
-    print(request.url)
-    print(rezept)
+    print(type(request.method))     #terminaldebug
+    print(request.url)              #terminaldebug
+    print(rezept)                   #terminaldebug
     
     if isinstance(rezept, list):
         for r in rezept:
@@ -69,7 +69,7 @@ def rezept_add(rezept:Union[Rezeptmaske, List[Rezeptmaske]],request:Request):
             }
     
     rezepte[rezept.rezept_id] = rezept
-    return {"message": "Rezept hinzugefügt", "rezept_id": rezept.rezept_id}
+    return {"message": "Rezept hinzugefügt", "rezept_id": rezept.rezept_id, "Rezeptname": rezept.name}
 
 @app.put("/rezepte/{rezept_id}")
 def rezept_comment(rezept_id: int, update:Rezept_Bemerkung):
