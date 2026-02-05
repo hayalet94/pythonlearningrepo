@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "buch": "Python Crashkurs",
+    "author": "Eric Matthes",
+    "erscheinungsjahr": 2019,
+    "gelesen": false
+  },
+  {
+    "id": 2,
+    "buch": "Automate the Boring Stuff",
+    "author": "Al Sweigart",
+    "erscheinungsjahr": 2020,
+    "gelesen": true
+  },
+  {
+    "id": 3,
+    "buch": "Learning Python",
+    "author": "Mark Lutz",
+    "erscheinungsjahr": 2013,
+    "gelesen": true
+  },
+  {
+    "id": 4,
+    "buch": "Siddharta",
+    "author": "Hermann Hesse",
+    "erscheinungsjahr": 2010,
+    "gelesen": true,
+    "tags": [
+      "Roman",
+      "Deutsch",
+      "Spirituell"
+    ]
+  },
+  {
+    "id": 5,
+    "buch": "1984",
+    "author": "George Orwell",
+    "erscheinungsjahr": 1949,
+    "gelesen": true,
+    "tags": [
+      "Roman",
+      "Englisch",
+      "Dystopie"
+    ]
+  },
+  {
+    "id": 6,
+    "buch": "Animal Farm",
+    "author": "George Orwell",
+    "erscheinungsjahr": 1945,
+    "gelesen": true,
+    "tags": [
+      "Roman",
+      "Englisch",
+      "Dystopie"
+    ]
+  }
+]
