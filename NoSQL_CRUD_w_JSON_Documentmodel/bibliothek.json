@@ -11,7 +11,7 @@
     "buch": "Automate the Boring Stuff",
     "author": "Al Sweigart",
     "erscheinungsjahr": 2020,
-    "gelesen": true
+    "gelesen": false
   },
   {
     "id": 3,
@@ -25,7 +25,7 @@
     "buch": "Siddharta",
     "author": "Hermann Hesse",
     "erscheinungsjahr": 2010,
-    "gelesen": true,
+    "gelesen": false,
     "tags": [
       "Roman",
       "Deutsch",

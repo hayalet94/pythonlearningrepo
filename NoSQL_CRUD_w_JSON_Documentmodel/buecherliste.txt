@@ -1,0 +1,33 @@
+========================================
+		Bücherliste
+========================================
+[ ] Python Crashkurs
+	Author: Eric Matthes
+	Erscheinungsjahr: 2019
+	ID 1
+----------------------------------------
+[ ] Automate the Boring Stuff
+	Author: Al Sweigart
+	Erscheinungsjahr: 2020
+	ID 2
+----------------------------------------
+[X] Learning Python
+	Author: Mark Lutz
+	Erscheinungsjahr: 2013
+	ID 3
+----------------------------------------
+[ ] Siddharta
+	Author: Hermann Hesse
+	Erscheinungsjahr: 2010
+	ID 4
+----------------------------------------
+[X] 1984
+	Author: George Orwell
+	Erscheinungsjahr: 1949
+	ID 5
+----------------------------------------
+[X] Animal Farm
+	Author: George Orwell
+	Erscheinungsjahr: 1945
+	ID 6
+----------------------------------------
